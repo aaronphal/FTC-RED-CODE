@@ -131,7 +131,10 @@ public class RobotTeleop extends OpMode
         leftDrive.setPower(leftPower);
         rightDrive.setPower(rightPower);
 <<<<<<< HEAD
+<<<<<<< HEAD
         centerDrive.setPower(center)
+=======
+>>>>>>> parent of 8b30909... Merge branch 'master' of https://github.com/aaronphal/FTC-RED-CODE
 =======
 >>>>>>> parent of 8b30909... Merge branch 'master' of https://github.com/aaronphal/FTC-RED-CODE
 
