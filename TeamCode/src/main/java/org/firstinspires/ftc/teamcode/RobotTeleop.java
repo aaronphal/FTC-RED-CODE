@@ -50,8 +50,8 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Robot Teleop", group="Iterative Opmode")
-@Disabled
+@TeleOp(name=">>Competition<<", group="Iterative Opmode")
+//@Disabled
 public class RobotTeleop extends OpMode
 {
     // Declare OpMode members.
@@ -65,6 +65,7 @@ public class RobotTeleop extends OpMode
     @Override
     public void init() {
         telemetry.addData("Status", "Initialized");
+
 
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
