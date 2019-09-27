@@ -168,9 +168,8 @@ import static android.view.View.X;
             // VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);  // Use this line to see camera display
             VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();                             // OR... Use this line to improve performance
 
-            // Get your own Vuforia key at  https://developer.vuforia.com/license-manager
-            // and paste it here...
-            parameters.vuforiaLicenseKey = "Afbu2Uv/////AAAAGVouNdSAD0P8la+sq37vCdQ6uLVH8NWrBLnfZ1R5rObJQpVVHJzqvIgMZO5gTqXG6DYJZcgwtSVZXU2g20FAJobxCog9Wc5vtqgJJmrsJ0NOABRbi9vy4Y9IzBVfaDoRsQTmjxxFf62Z9slttsb44KopGpVGTQ83iHnTo/wDvnZBWRhmckG6IKuqkbRYCFD+w1hHvVLuDoIYLgfpa1Rw1Pc7rszP/CDzUfeO9KwodFpEsfZHIZI8KHIYzfRIOhg1Tg0T4eRsLCO8s9vfZd6vfTuUA/sZkID3N7BsrlLaL6vUqheGPvsbPuQQsMqgPNYTqbhvv3KI/SR5WxUaccuVHnpVMhAjkdpruWVliCCZqp1t";
+            // vuforia developer key below
+            parameters.vuforiaLicenseKey = "ASh+s4v/////AAABmZ3TByjbWkBivrG+6BbFDF91VG+lsvvHoEKEM9J92i/QUaK0ZADmUU7CtgddPbF+P/QPKy9T0M4uMPzM+IdrYsTsvJ//P6BLnYiqd4IaXGJv8Xr7Mbh1/BtbjNX0QunaQNRF/GJq0N6DdpgVNI3GkDR9IYt63sIvZOAJ0GNEP4BeT/GGxzf8o7V1nOLcqfwK2uVbViLkn7rQ8KYUKEO4N1RBH72nln5Y7qqCx9HIoc6MQ5ss2a3Xw7QN2L46Sp6dZeVjgkAwRmKmvIBqkS20mHwx9myDPo+PSutNH7F1ZM61IEODqqjKn1PTIYlZKB8+3LHRzilVXGq34wOaA4dNNtYcK0Et62fYZiA7N54kT0hi";
 
             parameters.cameraDirection = CAMERA_CHOICE;
             parameters.useExtendedTracking = false;
