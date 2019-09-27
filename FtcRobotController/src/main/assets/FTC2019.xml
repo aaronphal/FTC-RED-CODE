@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="Skybridge_Red_Front_Top_Target" size="0.150000 0.054804" />
+    <ImageTarget name="Skybridge_Red_Rear_Top_Target" size="0.150000 0.055048" />
+    <ImageTarget name="Skybridge_Blue_Front_Top_Target" size="0.150000 0.054917" />
+    <ImageTarget name="Skybridge_Blue_Rear_Top_Target" size="0.150000 0.054691" />
+    <ImageTarget name="Skystone_Target" size="0.200000 0.187529" />
+    <ImageTarget name="Red_Perimeter_Target_2" size="0.200000 0.133292" />
+    <ImageTarget name="Red_Perimeter_Target_1" size="0.200000 0.132417" />
+    <ImageTarget name="Rear_Perimeter_Target_2" size="0.200000 0.112555" />
+    <ImageTarget name="Rear_Perimeter_Target_1" size="0.200000 0.133303" />
+    <ImageTarget name="Front_Perimeter_Target_2" size="0.200000 0.081574" />
+    <ImageTarget name="Front_Perimeter_Target_1" size="0.200000 0.133500" />
+    <ImageTarget name="Blue_Perimeter_Target_2" size="0.200000 0.083811" />
+    <ImageTarget name="Blue_Perimeter_Target_1" size="0.200000 0.133417" />
+  </Tracking>
+</QCARConfig>
