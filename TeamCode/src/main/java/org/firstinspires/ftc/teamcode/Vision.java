@@ -33,7 +33,7 @@ public class Vision extends LinearOpMode
     private OpenGLMatrix lastKnownLocation;
     private OpenGLMatrix phoneLocation;
 
-    private final static String VUFORIA_KEY = "ASh+s4v/////AAABmZ3TByjbWkBivrG+6BbFDF91VG+lsvvHoEKEM9J92i/QUaK0ZADmUU7CtgddPbF+P/QPKy9T0M4uMPzM+IdrYsTsvJ//P6BLnYiqd4IaXGJv8Xr7Mbh1/BtbjNX0QunaQNRF/GJq0N6DdpgVNI3GkDR9IYt63sIvZOAJ0GNEP4BeT/GGxzf8o7V1nOLcqfwK2uVbViLkn7rQ8KYUKEO4N1RBH72nln5Y7qqCx9HIoc6MQ5ss2a3Xw7QN2L46Sp6dZeVjgkAwRmKmvIBqkS20mHwx9myDPo+PSutNH7F1ZM61IEODqqjKn1PTIYlZKB8+3LHRzilVXGq34wOaA4dNNtYcK0Et62fYZiA7N54kT0hi";
+    private final static String VUFORIA_KEY = "ASh+s4v/////AAABmZ3TByjbWkBivrG+6BbFDF91VG+lsvvHoEKEM9J92i/QUaK0ZADmUU7CtgddPbF+P/QPKy9T0M4uMPzM+IdrYsTsvJ//P6BLnYiqd4IaXGJv8Xr7Mbh1/BtbjNX0QunaQNRF/GJq0N6DdpgVNI3GkDR9IYt63sIvZOAJ0GNEP4BeT/GGxzf8o7V1nOLcqfwK2uVbViLkn7rQ8KYUKEO4N1RBH72nln5Y7qqCx9HIoc6MQ5ss2a3Xw7QN2L46Sp6dZeVjgkAwRmKmvIBqkS20mHwx9myDPo+PSutNH7F1ZM61IEODqqjKn1PTIYlZKB8+3LHRzilVXGq34wOaA4dNNtYcK0Et62fYZiA7N54kT0hi"; // deprecated, please fix
 
     private float robotX = 0;
     private float robotY = 0;
