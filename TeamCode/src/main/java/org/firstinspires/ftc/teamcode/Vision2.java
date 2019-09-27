@@ -42,7 +42,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
             parameters.vuforiaLicenseKey = "ASh+s4v/////AAABmZ3TByjbWkBivrG+6BbFDF91VG+lsvvHoEKEM9J92i/QUaK0ZADmUU7CtgddPbF+P/QPKy9T0M4uMPzM+IdrYsTsvJ//P6BLnYiqd4IaXGJv8Xr7Mbh1/BtbjNX0QunaQNRF/GJq0N6DdpgVNI3GkDR9IYt63sIvZOAJ0GNEP4BeT/GGxzf8o7V1nOLcqfwK2uVbViLkn7rQ8KYUKEO4N1RBH72nln5Y7qqCx9HIoc6MQ5ss2a3Xw7QN2L46Sp6dZeVjgkAwRmKmvIBqkS20mHwx9myDPo+PSutNH7F1ZM61IEODqqjKn1PTIYlZKB8+3LHRzilVXGq34wOaA4dNNtYcK0Et62fYZiA7N54kT0hi";
 
             parameters.cameraDirection = VuforiaLocalizer.CameraDirection.FRONT;
-            this.vuforia = ClassFactory.createVuforiaLocalizer(parameters); //deprecated
+            this.vuforia = ClassFactory.createVuforiaLocalizer(parameters); //deprecated, please fix
 
             relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
             relicTemplate = relicTrackables.get(0);
