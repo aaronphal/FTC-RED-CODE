@@ -60,6 +60,8 @@ public class RobotTeleop extends OpMode
     private DcMotor rightDrive = null;
     private DcMotor centerDrive = null;
     private DcMotor elevator = null;
+    private DcMotor frontLeftDrive = null;
+    private DcMotor frontRightDrive = null;
 
 
 
@@ -77,6 +79,8 @@ public class RobotTeleop extends OpMode
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         centerDrive = hardwareMap.get(DcMotor.class, "center_drive");
         elevator = hardwareMap.get(DcMotor.class, "elevator_drive");
+        frontLeftDrive  = hardwareMap.get(DcMotor.class, "front_left_drive");
+        frontRightDrive = hardwareMap.get(DcMotor.class, "front_right_drive");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runsn backwards when connected directly to the battery
@@ -84,6 +88,8 @@ public class RobotTeleop extends OpMode
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
         centerDrive.setDirection(DcMotor.Direction.FORWARD);
         elevator.setDirection(DcMotor.Direction.FORWARD);
+        frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
+        frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
 
 
         // Tell the driver that initialization is complete.
@@ -115,6 +121,8 @@ public class RobotTeleop extends OpMode
         double rightPower;
         double centerPower;
         double elevatorPower;
+        double frontLeftPower;
+        double frontRightPower;
 
         // Choose to drive using either Tank Mode, or POV Mode
         // Comment out the method that's not used.  The default below is POV.
@@ -130,6 +138,8 @@ public class RobotTeleop extends OpMode
         rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
         centerPower   = Range.clip(enable_h + drive, -1.0, 1.0) ;
         elevatorPower   = Range.clip(enableElevator + drive, -1.0, 1.0) ;
+        frontLeftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
+        frontRightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
 
         // Tank Mode uses one stick to control each wheel.
         // - This requires no math, but it is hard to drive forward slowly and keep straight.
@@ -137,16 +147,20 @@ public class RobotTeleop extends OpMode
         rightPower = -gamepad1.right_stick_y ;
         centerPower =  -gamepad1.right_stick_x ;
         elevatorPower  = -gamepad1.right_stick_y ;
+        frontLeftPower  = -gamepad1.left_stick_y ;
+        frontRightPower = -gamepad1.right_stick_y ;
 
         // Send calculated power to wheels
         leftDrive.setPower(leftPower);
         rightDrive.setPower(rightPower);
         centerDrive.setPower(centerPower);
         elevator.setPower(elevatorPower);
+        frontLeftDrive.setPower(frontLeftPower);
+        frontRightDrive.setPower(frontRightPower);
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f), center  (%.2f)", leftPower, rightPower, centerPower);
+        telemetry.addData("Motors", "left (%.2f), right (%.2f), center  (%.2f)", leftPower, rightPower, centerPower, elevatorPower, frontLeftPower, frontRightPower);
     }
 
     /*
