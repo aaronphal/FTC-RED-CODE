@@ -75,12 +75,12 @@ public class RobotTeleop extends OpMode
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
-        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-        centerDrive = hardwareMap.get(DcMotor.class, "center_drive");
+        leftDrive  = hardwareMap.get(DcMotor.class, "bl");
+        rightDrive = hardwareMap.get(DcMotor.class, "br");
+        centerDrive = hardwareMap.get(DcMotor.class, "c");
         elevator = hardwareMap.get(DcMotor.class, "elevator_drive");
-        frontLeftDrive  = hardwareMap.get(DcMotor.class, "front_left_drive");
-        frontRightDrive = hardwareMap.get(DcMotor.class, "front_right_drive");
+        frontLeftDrive  = hardwareMap.get(DcMotor.class, "fl");
+        frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runsn backwards when connected directly to the battery
