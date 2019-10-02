@@ -180,12 +180,21 @@ public class Robot_Navigation
          * These particular data sets are stored in the 'assets' part of our application
          * They represent the four image targets used in the 2016-17 FTC game.
          */
-        targets = vuforia.loadTrackablesFromAsset("FTC_2016-17");
-        targets.get(0).setName("Blue Near");
-        targets.get(1).setName("Red Far");
-        targets.get(2).setName("Blue Far");
-        targets.get(3).setName("Red Near");
-
+        targets = vuforia.loadTrackablesFromAsset("FTC_2019");
+        targets.get(0).setName("Skybridge_Red_Front_Top_Target");
+        targets.get(1).setName("Skybridge_Red_Rear_Top_Target");
+        targets.get(2).setName("Skybridge_Blue_Front_Top_Target");
+        targets.get(3).setName("Skybridge_Blue_Rear_Top_Target");
+        targets.get(4).setName("Skystone_Target");
+        targets.get(5).setName("Red_Perimeter_Target_2");
+        targets.get(7).setName("Red_Perimeter_Target_1");
+        targets.get(8).setName("Rear_Perimeter_Target_2");
+        targets.get(9).setName("Rear_Perimeter_Target_1");
+        targets.get(10).setName("Front_Perimeter_Target_2");
+        targets.get(11).setName("Front_Perimeter_Target_1");
+        targets.get(12).setName("Blue_Perimeter_Target_2");
+        targets.get(13).setName("Blue_Perimeter_Target_1");
+        
         /** For convenience, gather together all the trackable objects in one easily-iterable collection */
         List<VuforiaTrackable> allTrackables = new ArrayList<VuforiaTrackable>();
         allTrackables.addAll(targets);
