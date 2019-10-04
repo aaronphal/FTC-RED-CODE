@@ -33,6 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -62,6 +63,7 @@ public class RobotTeleop extends OpMode
     private DcMotor elevator = null;
     private DcMotor frontLeftDrive = null;
     private DcMotor frontRightDrive = null;
+    private DcMotor flyWheel = null;
 
 
 
@@ -81,6 +83,7 @@ public class RobotTeleop extends OpMode
         elevator = hardwareMap.get(DcMotor.class, "elevator_drive");
         frontLeftDrive  = hardwareMap.get(DcMotor.class, "fl");
         frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
+        flyWheel = hardwareMap.get(DcMotor.class, "fly");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runsn backwards when connected directly to the battery
@@ -90,7 +93,7 @@ public class RobotTeleop extends OpMode
         elevator.setDirection(DcMotor.Direction.FORWARD);
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
-
+        flyWheel.setDirection(DcMotor.Direction.FORWARD);
 
         // Tell the driver that initialization is complete.
         telemetry.addData("Status", "Initialized");
@@ -123,6 +126,7 @@ public class RobotTeleop extends OpMode
         double elevatorPower;
         double frontLeftPower;
         double frontRightPower;
+        double flyWheelPower;
 
         // Choose to drive using either Tank Mode, or POV Mode
         // Comment out the method that's not used.  The default below is POV.
@@ -149,6 +153,15 @@ public class RobotTeleop extends OpMode
         elevatorPower  = -gamepad1.right_stick_y ;
         frontLeftPower  = -gamepad1.left_stick_y ;
         frontRightPower = -gamepad1.right_stick_y ;
+        if(gamepad1.a){
+            flyWheelPower=1;
+        }
+        else if(gamepad1.b){
+            flyWheelPower=-1;
+        }
+        else{
+            flyWheelPower=0;
+        }
 
         // Send calculated power to wheels
         leftDrive.setPower(leftPower);
@@ -157,6 +170,7 @@ public class RobotTeleop extends OpMode
         elevator.setPower(elevatorPower);
         frontLeftDrive.setPower(frontLeftPower);
         frontRightDrive.setPower(frontRightPower);
+        flyWheel.setPower(flyWheelPower);
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
