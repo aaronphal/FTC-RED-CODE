@@ -50,9 +50,9 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Robot Teleop", group="Iterative Opmode")
+@TeleOp(name=">><<", group="Iterative Opmode")
 //@Disabled
-public class RobotTeleop extends OpMode
+public class RobotTeleop2 extends OpMode
 {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -143,12 +143,27 @@ public class RobotTeleop extends OpMode
 
         // Tank Mode uses one stick to control each wheel.
         // - This requires no math, but it is hard to drive forward slowly and keep straight.
-         leftPower  = -gamepad1.left_stick_y ;
-        rightPower = -gamepad1.right_stick_y ;
-        centerPower =  -gamepad1.right_stick_x ;
+        leftPower  = -gamepad1.left_stick_y ;
+        rightPower = -gamepad1.left_stick_y ;
+        centerPower =  -gamepad1.left_stick_x ;
         elevatorPower  = -gamepad1.right_stick_y ;
         frontLeftPower  = -gamepad1.left_stick_y ;
-        frontRightPower = -gamepad1.right_stick_y ;
+        frontRightPower = -gamepad1.left_stick_y ;
+
+        if (Math.abs(gamepad1.right_stick_x) > 0.1) {
+            leftPower  = -gamepad1.right_stick_x ;
+            rightPower = gamepad1.right_stick_x ;
+            frontLeftPower  = -gamepad1.right_stick_x ;
+            frontRightPower = gamepad1.right_stick_x ;
+        }
+        else {
+            leftPower  = gamepad1.left_stick_y ;
+            rightPower = gamepad1.left_stick_y ;
+            centerPower =  -gamepad1.left_stick_x ;
+            elevatorPower  = gamepad1.right_stick_y ;
+            frontLeftPower  = gamepad1.left_stick_y ;
+            frontRightPower = gamepad1.left_stick_y ;
+        }
 
         // Send calculated power to wheels
         leftDrive.setPower(leftPower);
