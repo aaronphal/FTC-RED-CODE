@@ -177,7 +177,7 @@ public class RobotTeleop2 extends OpMode
             flyWheelPower=0;
         }
 
-        // Send calculated power to wheels
+        // Send calculated power to wheels, omnidirectional
         leftDrive.setPower(leftPower);
         rightDrive.setPower(rightPower);
         centerDrive.setPower(centerPower);
