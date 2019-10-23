@@ -182,7 +182,7 @@ public class RobotTeleop2 extends OpMode
         rightDrive.setPower(rightPower);
         centerDrive.setPower(centerPower);
         elevator.setPower(elevatorPower);
-        frontLeftDrive.setPower(frontLeftPower);
+        frontLeftDrive.setPower(-frontLeftPower);
         frontRightDrive.setPower(frontRightPower);
         flyWheel.setPower(flyWheelPower);
 
