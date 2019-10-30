@@ -62,7 +62,7 @@ public class RobotTeleop2 extends OpMode
     private DcMotor elevator = null;
     private DcMotor frontLeftDrive = null;
     private DcMotor frontRightDrive = null;
-    private DcMotor flyWheel = null;
+   // private DcMotor flyWheel = null;
 
 
     /*
@@ -81,7 +81,7 @@ public class RobotTeleop2 extends OpMode
         elevator = hardwareMap.get(DcMotor.class, "elevator_drive");
         frontLeftDrive  = hardwareMap.get(DcMotor.class, "fl");
         frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
-        flyWheel = hardwareMap.get(DcMotor.class, "fly");
+        //flyWheel = hardwareMap.get(DcMotor.class, "fly");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runsn backwards when connected directly to the battery
@@ -91,7 +91,7 @@ public class RobotTeleop2 extends OpMode
         elevator.setDirection(DcMotor.Direction.FORWARD);
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        flyWheel.setDirection(DcMotor.Direction.FORWARD);
+        //flyWheel.setDirection(DcMotor.Direction.FORWARD);
 
         // Tell the driver that initialization is complete.
         telemetry.addData("Status", "Initialized");
@@ -184,7 +184,7 @@ public class RobotTeleop2 extends OpMode
         elevator.setPower(elevatorPower);
         frontLeftDrive.setPower(-frontLeftPower);
         frontRightDrive.setPower(frontRightPower);
-        flyWheel.setPower(flyWheelPower);
+      //  flyWheel.setPower(flyWheelPower);
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
