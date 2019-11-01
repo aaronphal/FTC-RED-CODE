@@ -48,10 +48,10 @@ public class Robot_OmniDrive
 
 
     /* Initialize standard Hardware interfaces */
-    public void initDrive(LinearOpMode opMode) {
+    public void initDrive() {
 
         // Save reference to Hardware map
-        myOpMode = opMode;
+        //myOpMode = opMode;
 
         // Define and Initialize Motors
         leftDrive        = myOpMode.hardwareMap.get(DcMotor.class, "left drive");
