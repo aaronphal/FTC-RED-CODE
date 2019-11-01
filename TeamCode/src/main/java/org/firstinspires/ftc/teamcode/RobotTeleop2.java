@@ -179,7 +179,7 @@ public class RobotTeleop2 extends OpMode
             grabber.setPosition(0);
         }
         else if(gamepad1.b){
-            grabber.setPosition(0.1);
+            grabber.setPosition(0.2);
         }
 
         // Show the elapsed game time and wheel power.
