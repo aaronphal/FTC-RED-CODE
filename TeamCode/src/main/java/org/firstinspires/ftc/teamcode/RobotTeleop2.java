@@ -167,13 +167,6 @@ public class RobotTeleop2 extends OpMode
             frontRightPower = gamepad1.left_stick_y ;
         }
 
-        if(gamepad1.a){
-            grabber.setPosition(0);
-        }
-        else if(gamepad1.b){
-            grabber.setPosition(0.1);
-        }
-
 
         // Send calculated power to wheels, omnidirectional
         leftDrive.setPower(leftPower);
@@ -182,6 +175,12 @@ public class RobotTeleop2 extends OpMode
         elevator.setPower(elevatorPower);
         frontLeftDrive.setPower(frontLeftPower);
         frontRightDrive.setPower(-frontRightPower);
+        if(gamepad1.a){
+            grabber.setPosition(0);
+        }
+        else if(gamepad1.b){
+            grabber.setPosition(0.1);
+        }
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
