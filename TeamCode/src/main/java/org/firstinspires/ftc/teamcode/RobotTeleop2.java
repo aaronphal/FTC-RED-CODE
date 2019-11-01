@@ -92,7 +92,7 @@ public class RobotTeleop2 extends OpMode
         elevator.setDirection(DcMotor.Direction.FORWARD);
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        
+
 
         // Tell the driver that initialization is complete.
         telemetry.addData("Status", "Initialized");
@@ -171,7 +171,7 @@ public class RobotTeleop2 extends OpMode
             grabber.setPosition(0);
         }
         else if(gamepad1.b){
-            grabber.setPosition(0.25);
+            grabber.setPosition(0.1);
         }
 
 
