@@ -82,7 +82,7 @@ public class RobotTeleop2 extends OpMode
         elevator = hardwareMap.get(DcMotor.class, "elevator_drive");
         frontLeftDrive  = hardwareMap.get(DcMotor.class, "fl");
         frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
-        grabber = hardwareMap.get(Servo.class, "grabber");
+        grabber = hardwareMap.get(Servo.class, "gr");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runsn backwards when connected directly to the battery
@@ -92,6 +92,7 @@ public class RobotTeleop2 extends OpMode
         elevator.setDirection(DcMotor.Direction.FORWARD);
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
+        
 
         // Tell the driver that initialization is complete.
         telemetry.addData("Status", "Initialized");
