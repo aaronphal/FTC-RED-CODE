@@ -179,7 +179,7 @@ public class RobotTeleop2 extends OpMode
         rightDrive.setPower(rightPower);
         centerDrive.setPower(centerPower);
         elevator.setPower(elevatorPower);
-        frontLeftDrive.setPower(-frontLeftPower);
+        frontLeftDrive.setPower(frontLeftPower);
         frontRightDrive.setPower(frontRightPower);
 
         // Show the elapsed game time and wheel power.
