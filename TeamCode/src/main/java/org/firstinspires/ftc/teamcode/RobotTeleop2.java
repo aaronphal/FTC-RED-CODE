@@ -176,10 +176,10 @@ public class RobotTeleop2 extends OpMode
         frontLeftDrive.setPower(frontLeftPower);
         frontRightDrive.setPower(-frontRightPower);
         if(gamepad1.a){
-            grabber.setPosition(0);
+            grabber.setPosition(0.3);
         }
         else if(gamepad1.b){
-            grabber.setPosition(0.2);
+            grabber.setPosition(0.8);
         }
 
         // Show the elapsed game time and wheel power.
