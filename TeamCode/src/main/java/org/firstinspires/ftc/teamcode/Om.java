@@ -80,10 +80,10 @@ public class Om extends OpMode {
 
         // holonomic formulas
 
-        float FrontLeft = -gamepad1LeftY - gamepad1LeftX - gamepad1RightX;
+        float FrontLeft = gamepad1LeftY - gamepad1LeftX - gamepad1RightX;
         float FrontRight = gamepad1LeftY - gamepad1LeftX - gamepad1RightX;
         float BackRight = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
-        float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
+        float BackLeft = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
         // clip the right/left values so that the values never exceed +/- 1
         //FrontRight = Range.clip(FrontRight, -1, 1);
@@ -92,7 +92,7 @@ public class Om extends OpMode {
         //BackRight = Range.clip(BackRight, -1, 1);
 
         // write the values to the motors
-        motorFrontRight.setPower(FrontRight);
+        motorFrontRight.setPower(-FrontRight);
         motorFrontLeft.setPower(FrontLeft);
         motorBackLeft.setPower(BackLeft);
         motorBackRight.setPower(BackRight);

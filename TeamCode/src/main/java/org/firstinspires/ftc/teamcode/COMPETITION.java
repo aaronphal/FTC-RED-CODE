@@ -50,14 +50,14 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Iterative OpMode", group="Iterative Opmode")
-@Disabled
+@TeleOp(name="COMP", group="Iterative Opmode")
+//@Disabled
 public class COMPETITION extends OpMode
 {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
 
-    private static Om drive = null;
+    private static Om drive = new Om();
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -65,7 +65,7 @@ public class COMPETITION extends OpMode
     @Override
     public void init() {
         telemetry.addData("Status", "Initialized");
-        drive = new Om();
+
         drive.init();
 
 
@@ -88,6 +88,7 @@ public class COMPETITION extends OpMode
      */
     @Override
     public void init_loop() {
+        drive.init_loop();
     }
 
     /*
@@ -96,6 +97,7 @@ public class COMPETITION extends OpMode
     @Override
     public void start() {
         runtime.reset();
+        drive.start();
     }
 
     /*
