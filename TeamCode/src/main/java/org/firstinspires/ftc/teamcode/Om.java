@@ -54,10 +54,10 @@ public class Om extends OpMode {
          */
 
 
-        motorFrontRight = hardwareMap.dcMotor.get("motor front right");
-        motorFrontLeft = hardwareMap.dcMotor.get("motor front left");
-        motorBackLeft = hardwareMap.dcMotor.get("motor back left");
-        motorBackRight = hardwareMap.dcMotor.get("motor back right");
+        motorFrontRight = hardwareMap.dcMotor.get("fr");
+        motorFrontLeft = hardwareMap.dcMotor.get("fl");
+        motorBackLeft = hardwareMap.dcMotor.get("bl");
+        motorBackRight = hardwareMap.dcMotor.get("br");
         //These work without reversing (Tetrix motors).
         //AndyMark motors may be opposite, in which case uncomment these lines:
         //motorFrontLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -96,14 +96,14 @@ public class Om extends OpMode {
         motorFrontLeft.setPower(FrontLeft);
         motorBackLeft.setPower(BackLeft);
         motorBackRight.setPower(BackRight);
-
+       
 
         /*
          * Telemetry for debugging
          */
         telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("Joy XL YL XR",  String.format("%.2f", gamepad1LeftX) + " " +
-                String.format("%.2f", gamepad1LeftY) + " " +  String.format("%.2f", gamepad1RightX));
+                String.format("%.2f", gamepad1LeftY) + " " +  String.format("%.2f", -gamepad1RightX));
         telemetry.addData("f left pwr",  "front left  pwr: " + String.format("%.2f", FrontLeft));
         telemetry.addData("f right pwr", "front right pwr: " + String.format("%.2f", FrontRight));
         telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
