@@ -39,7 +39,7 @@ public class TeleopOpmode extends LinearOpMode {
     public void runOpMode() {
 
         // Initialize the robot and navigation
-        robot.initDrive();
+        robot.initDrive(this);
         nav.initVuforia(this, robot);
 
         // Activate Vuforia (this takes a few seconds)
