@@ -54,10 +54,10 @@ public class Om extends OpMode {
          */
 
 
-        motorFrontRight = hardwareMap.dcMotor.get("fr");
-        motorFrontLeft = hardwareMap.dcMotor.get("fl");
-        motorBackLeft = hardwareMap.dcMotor.get("bl");
-        motorBackRight = hardwareMap.dcMotor.get("br");
+        motorFrontRight = hardwareMap.dcMotor.get("motor front right");
+        motorFrontLeft = hardwareMap.dcMotor.get("motor front left");
+        motorBackLeft = hardwareMap.dcMotor.get("motor back left");
+        motorBackRight = hardwareMap.dcMotor.get("motor back right");
         //These work without reversing (Tetrix motors).
         //AndyMark motors may be opposite, in which case uncomment these lines:
         //motorFrontLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -86,10 +86,10 @@ public class Om extends OpMode {
         float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
         // clip the right/left values so that the values never exceed +/- 1
-        //FrontRight = Range.clip(FrontRight, -1, 1);
-        //FrontLeft = Range.clip(FrontLeft, -1, 1);
-        //BackLeft = Range.clip(BackLeft, -1, 1);
-        //BackRight = Range.clip(BackRight, -1, 1);
+        FrontRight = Range.clip(FrontRight, -1, 1);
+        FrontLeft = Range.clip(FrontLeft, -1, 1);
+        BackLeft = Range.clip(BackLeft, -1, 1);
+        BackRight = Range.clip(BackRight, -1, 1);
 
         // write the values to the motors
         motorFrontRight.setPower(FrontRight);
