@@ -51,7 +51,7 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name=">><<", group="Iterative Opmode")
+@TeleOp(name="flywheel", group="Iterative Opmode")
 //@Disabled
 public class RobotTeleop2 extends OpMode
 {
@@ -63,8 +63,10 @@ public class RobotTeleop2 extends OpMode
     private DcMotor elevator = null;
     private DcMotor frontLeftDrive = null;
     private DcMotor frontRightDrive = null;
+    private DcMotor leftFlywheel = null;
+    private DcMotor rightFlywheel = null;
     private Servo grabber = null;
-
+    private double flyWheelPower = 0;
 
     /*
      * Code to run ONkCE when the driver hits INIT
@@ -82,6 +84,8 @@ public class RobotTeleop2 extends OpMode
         elevator = hardwareMap.get(DcMotor.class, "elevator_drive");
         frontLeftDrive  = hardwareMap.get(DcMotor.class, "fl");
         frontRightDrive = hardwareMap.get(DcMotor.class, "fr");
+        leftFlywheel = hardwareMap.get(DcMotor.class, "lfw");
+        rightFlywheel = hardwareMap.get(DcMotor.class, "rfw");
         grabber = hardwareMap.get(Servo.class, "gr");
 
         // Most robots need the motor on one side to be reversed to drive forward
@@ -92,6 +96,8 @@ public class RobotTeleop2 extends OpMode
         elevator.setDirection(DcMotor.Direction.FORWARD);
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftFlywheel.setDirection(DcMotor.Direction.REVERSE);
+        rightFlywheel.setDirection(DcMotor.Direction.FORWARD);
 
 
         // Tell the driver that initialization is complete.
@@ -167,7 +173,12 @@ public class RobotTeleop2 extends OpMode
             frontRightPower = gamepad1.left_stick_y ;
         }
 
-
+        if(gamepad1.x){
+            flyWheelPower=0.1;
+        }
+        else if(gamepad1.y){
+            flyWheelPower=-0.1;
+        }
         // Send calculated power to wheels, omnidirectional
         leftDrive.setPower(leftPower);
         rightDrive.setPower(rightPower);
@@ -175,12 +186,22 @@ public class RobotTeleop2 extends OpMode
         elevator.setPower(elevatorPower);
         frontLeftDrive.setPower(frontLeftPower);
         frontRightDrive.setPower(-frontRightPower);
+        leftFlywheel.setPower(flyWheelPower);
+        rightFlywheel.setPower(flyWheelPower);
         if(gamepad1.a){
-            grabber.setPosition(0.3);
+            grabber.setPosition(0.1);
         }
         else if(gamepad1.b){
-            grabber.setPosition(0.8);
+            grabber.setPosition(0.15);
+        } else {
+            grabber.setPosition(0.13);
         }
+        /*if(gamepad1.a){
+            grabber.setPosition(grabber.getPosition()+0.1);
+        }
+        else if(gamepad1.b){
+            grabber.setPosition(grabber.getPosition()-0.1);
+        }*/
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
