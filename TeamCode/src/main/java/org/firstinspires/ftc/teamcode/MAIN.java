@@ -10,6 +10,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 /*
@@ -34,7 +35,7 @@ public class MAIN extends OpMode {
     DcMotor motorFrontLeft;
     DcMotor motorBackRight;
     DcMotor motorBackLeft;
-
+    Servo grabber;
     /**
      * Constructor
      */
@@ -57,6 +58,7 @@ public class MAIN extends OpMode {
         motorFrontLeft = hardwareMap.dcMotor.get("fl");
         motorBackLeft = hardwareMap.dcMotor.get("bl");
         motorBackRight = hardwareMap.dcMotor.get("br");
+        grabber = hardwareMap.get(Servo.class, "gr");
         //These work without reversing (Tetrix motors).
         //AndyMark motors may be opposite, in which case uncomment these lines:
         //motorFrontLeft.setDirection(DcMotor.Direction.REVERSE);
