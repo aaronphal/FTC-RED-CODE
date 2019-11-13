@@ -66,7 +66,7 @@ import org.firstinspires.ftc.teamcode.Om;
 
 @Autonomous(name="Pushbot: Auto Drive By Encoder", group="Pushbot")
 @Disabled
-class PushbotAutoDriveByEncoder_Linear extends Om {
+class AUTO extends Om {
 
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
