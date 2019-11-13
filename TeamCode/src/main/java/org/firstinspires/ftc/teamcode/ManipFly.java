@@ -2,10 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 
 @TeleOp(name="ManipFly", group="Iterative Opmode")
@@ -87,7 +85,7 @@ public class ManipFly extends OpMode {
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
-        telemetry.addData("Motors", "left (%.2f), right (%.2f), center  (%.2f)", leftPower, rightPower, centerPower, elevatorPower, frontLeftPower, frontRightPower);
+        telemetry.addData("Motors", "left (%.2f), right (%.2f), center  (%.2f)");
     }
 
     /*
