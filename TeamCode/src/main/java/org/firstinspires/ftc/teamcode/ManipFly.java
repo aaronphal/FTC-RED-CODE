@@ -86,7 +86,7 @@ public class ManipFly extends OpMode {
         double elevatorPower;
         double frontLeftPower;
         double frontRightPower;
-        double flyWheelPower;
+        double grabberPos;
 
         // Choose to drive using either Tank Mode, or POV Mode
         // Comment out the method that's not used.  The default below is POV.
@@ -130,17 +130,16 @@ public class ManipFly extends OpMode {
         }
 
         if(gamepad1.x){
-            flyWheelPower=0.6;
+            grabberPos=0.6;
         }
         else if(gamepad1.y){
-            flyWheelPower=-0.6;
+            grabberPos=0.5;
         }
         else{
-            flyWheelPower=-0;
+            grabberPos=0;
         }
 
-        leftFlywheel.setPower(flyWheelPower);
-        rightFlywheel.setPower(flyWheelPower);
+        grabber.setPosition(grabberPos);
 
         // Send calculated power to wheels, omnidirectional
         leftDrive.setPower(leftPower);
