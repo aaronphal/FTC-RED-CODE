@@ -66,7 +66,6 @@ public class RobotTeleop2 extends OpMode
     private DcMotor leftFlywheel = null;
     private DcMotor rightFlywheel = null;
     private Servo grabber = null;
-    private double flyWheelPower = 0;
 
     /*
      * Code to run ONkCE when the driver hits INIT
@@ -131,6 +130,7 @@ public class RobotTeleop2 extends OpMode
         double elevatorPower;
         double frontLeftPower;
         double frontRightPower;
+        double flyWheelPower = 0;
 
         // Choose to drive using either Tank Mode, or POV Mode
         // Comment out the method that's not used.  The default below is POV.
@@ -173,10 +173,10 @@ public class RobotTeleop2 extends OpMode
             frontRightPower = gamepad1.left_stick_y ;
         }
 
-        if(gamepad1.x){
+        while(gamepad1.x){
             flyWheelPower=0.1;
         }
-        else if(gamepad1.y){
+        while(gamepad1.y){
             flyWheelPower=-0.1;
         }
         // Send calculated power to wheels, omnidirectional
