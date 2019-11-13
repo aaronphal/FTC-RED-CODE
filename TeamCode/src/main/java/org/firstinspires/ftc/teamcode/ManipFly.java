@@ -22,7 +22,6 @@ public class ManipFly extends OpMode {
     private DcMotor leftFlywheel = null;
     private DcMotor rightFlywheel = null;
     private Servo grabber = null;
-    private double flyWheelPower = 0;
 
     /*
      * Code to run ONkCE when the driver hits INIT
@@ -87,6 +86,7 @@ public class ManipFly extends OpMode {
         double elevatorPower;
         double frontLeftPower;
         double frontRightPower;
+        double flyWheelPower;
 
         // Choose to drive using either Tank Mode, or POV Mode
         // Comment out the method that's not used.  The default below is POV.
@@ -135,9 +135,13 @@ public class ManipFly extends OpMode {
         else if(gamepad1.y){
             flyWheelPower=-0.6;
         }
-        else if(gamepad1.left_bumper){
-            flyWheelPower=0;
+        else{
+            flyWheelPower=-0;
         }
+
+        leftFlywheel.setPower(flyWheelPower);
+        rightFlywheel.setPower(flyWheelPower);
+
         // Send calculated power to wheels, omnidirectional
         leftDrive.setPower(leftPower);
         rightDrive.setPower(rightPower);
@@ -145,8 +149,6 @@ public class ManipFly extends OpMode {
         elevator.setPower(elevatorPower);
         frontLeftDrive.setPower(frontLeftPower);
         frontRightDrive.setPower(-frontRightPower);
-        leftFlywheel.setPower(flyWheelPower);
-        rightFlywheel.setPower(flyWheelPower);
         if(gamepad1.a){
             grabber.setPosition(0.1);
         }
