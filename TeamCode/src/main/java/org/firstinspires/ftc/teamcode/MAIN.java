@@ -10,6 +10,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 /*
@@ -34,7 +35,7 @@ public class MAIN extends OpMode {
     DcMotor motorFrontLeft;
     DcMotor motorBackRight;
     DcMotor motorBackLeft;
-
+    Servo grabber;
     /**
      * Constructor
      */
@@ -57,6 +58,7 @@ public class MAIN extends OpMode {
         motorFrontLeft = hardwareMap.dcMotor.get("fl");
         motorBackLeft = hardwareMap.dcMotor.get("bl");
         motorBackRight = hardwareMap.dcMotor.get("br");
+        grabber = hardwareMap.get(Servo.class, "gr");
         //These work without reversing (Tetrix motors).
         //AndyMark motors may be opposite, in which case uncomment these lines:
         //motorFrontLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -69,7 +71,7 @@ public class MAIN extends OpMode {
     @Override
     public void loop() {
 
-
+        double grabberPos;
         // left stick controls direction
         // right stick X controls rotation
 
@@ -84,6 +86,16 @@ public class MAIN extends OpMode {
         float BackRight = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
         float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
+        if(gamepad1.x){
+            grabberPos=0.6;
+        }
+        else if(gamepad1.y){
+            grabberPos=0.5;
+        }
+        else{
+            grabberPos=0;
+        }
+
         // clip the right/left values so that the values never exceed +/- 1
         //FrontRight = Range.clip(FrontRight, -1, 1);
         //FrontLeft = Range.clip(FrontLeft, -1, 1);
@@ -96,7 +108,7 @@ public class MAIN extends OpMode {
         motorBackLeft.setPower(BackLeft);
         motorBackRight.setPower(BackRight);
 
-
+        grabber.setPosition(grabberPos);
         /*
          * Telemetry for debugging
          */
