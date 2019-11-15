@@ -64,12 +64,13 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Pushbot: Auto Drive By Encoder", group="Pushbot")
+@Autonomous(name="AUTO: PARK UNDER BRIDGE", group="Pushbot")
 //@Disabled
 public class AUTOTEST extends LinearOpMode {
 
     /* Declare OpMode members. */
-    public static MAIN robot   = new MAIN();   // Use a Pushbot's hardware
+    //public static MAIN robot   = new MAIN();
+    public static HardwareMap robot   = new HardwareMap();// Use a Pushbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
 
     static final double     COUNTS_PER_MOTOR_REV    = 228 ;    // eg: TETRIX Motor Encoder
@@ -77,7 +78,7 @@ public class AUTOTEST extends LinearOpMode {
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
                                                       (WHEEL_DIAMETER_INCHES * 3.1415);
-    static final double     DRIVE_SPEED             = 0.6;
+    static final double     DRIVE_SPEED             = 1.0;
     static final double     TURN_SPEED              = 0.5;
 
     @Override
@@ -87,8 +88,8 @@ public class AUTOTEST extends LinearOpMode {
          * Initialize the drive system variables.
          * The init() method of the hardware class does all the work here
          */
-        //robot.init(hardwareMap);
-        robot.init();
+        robot.init(hardwareMap);
+        //robot.init();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Resetting Encoders");    //
@@ -111,9 +112,9 @@ public class AUTOTEST extends LinearOpMode {
 
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
-        encoderDrive(DRIVE_SPEED,  48,  48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
-        encoderDrive(TURN_SPEED,   12, -12, 4.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
-        encoderDrive(DRIVE_SPEED, -24, -24, 4.0);  // S3: Reverse 24 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED,  -40,  40, 10.0);  // S1: Forward 47 Inches with 5 Sec timeout
+        encoderDrive(TURN_SPEED,   42, 42, 10.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
+        encoderDrive(DRIVE_SPEED, -44, 44, 10.0);  // S3: Reverse 24 Inches with 4 Sec timeout
 
 //        robot.leftClaw.setPosition(1.0);            // S4: Stop and close the claw.
 //        robot.rightClaw.setPosition(0.0);
@@ -145,15 +146,21 @@ public class AUTOTEST extends LinearOpMode {
             newRightTarget = robot.motorFrontRight.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
             robot.motorFrontLeft.setTargetPosition(newLeftTarget);
             robot.motorFrontRight.setTargetPosition(newRightTarget);
+            robot.motorBackLeft.setTargetPosition(newLeftTarget);
+            robot.motorBackRight.setTargetPosition(newRightTarget);
 
             // Turn On RUN_TO_POSITION
             robot.motorFrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             robot.motorFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.motorBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.motorBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             // reset the timeout time and start motion.
             runtime.reset();
             robot.motorFrontLeft.setPower(Math.abs(speed));
             robot.motorFrontRight.setPower(Math.abs(speed));
+            robot.motorBackLeft.setPower(Math.abs(speed));
+            robot.motorBackRight.setPower(Math.abs(speed));
 
             // keep looping while we are still active, and there is time left, and both motors are running.
             // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
@@ -168,18 +175,24 @@ public class AUTOTEST extends LinearOpMode {
                 // Display it for the driver.
                 telemetry.addData("Path1",  "Running to %7d :%7d", newLeftTarget,  newRightTarget);
                 telemetry.addData("Path2",  "Running at %7d :%7d",
-                                            robot.motorFrontLeft.getCurrentPosition(),
-                                            robot.motorFrontRight.getCurrentPosition());
+                        robot.motorFrontLeft.getCurrentPosition(),
+                        robot.motorFrontRight.getCurrentPosition(),
+                        robot.motorBackLeft.getCurrentPosition(),
+                        robot.motorBackRight.getCurrentPosition());
                 telemetry.update();
             }
 
             // Stop all motion;
             robot.motorFrontLeft.setPower(0);
             robot.motorFrontRight.setPower(0);
+            robot.motorBackLeft.setPower(0);
+            robot.motorBackRight.setPower(0);
 
             // Turn off RUN_TO_POSITION
             robot.motorFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.motorFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.motorBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.motorBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             //  sleep(250);   // optional pause after each move
         }

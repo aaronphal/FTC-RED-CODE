@@ -12,7 +12,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-
 /*
 	Holonomic concepts from:
 	http://www.vexforum.com/index.php/12370-holonomic-drives-2-0-a-video-tutorial-by-cody/0
@@ -31,11 +30,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 //@Disabled
 public class MAIN extends OpMode {
 
-    DcMotor motorFrontRight;
-    DcMotor motorFrontLeft;
-    DcMotor motorBackRight;
-    DcMotor motorBackLeft;
-    Servo grabber;
+    HardwareMap robot = new HardwareMap();
+
+    Servo grabber = null;
     /**
      * Constructor
      */
@@ -45,6 +42,7 @@ public class MAIN extends OpMode {
 
     @Override
     public void init() {
+        robot.init(hardwareMap);
 
 
         /*
@@ -53,11 +51,6 @@ public class MAIN extends OpMode {
          * configured your robot and created the configuration file.
          */
 
-
-        motorFrontRight = hardwareMap.dcMotor.get("fr");
-        motorFrontLeft = hardwareMap.dcMotor.get("fl");
-        motorBackLeft = hardwareMap.dcMotor.get("bl");
-        motorBackRight = hardwareMap.dcMotor.get("br");
         grabber = hardwareMap.get(Servo.class, "gr");
         //These work without reversing (Tetrix motors).
         //AndyMark motors may be opposite, in which case uncomment these lines:
@@ -103,10 +96,10 @@ public class MAIN extends OpMode {
         //BackRight = Range.clip(BackRight, -1, 1);
 
         // write the values to the motors
-        motorFrontRight.setPower(FrontRight);
-        motorFrontLeft.setPower(FrontLeft);
-        motorBackLeft.setPower(BackLeft);
-        motorBackRight.setPower(BackRight);
+        robot.motorFrontRight.setPower(FrontRight);
+        robot.motorFrontLeft.setPower(FrontLeft);
+        robot.motorBackLeft.setPower(BackLeft);
+        robot.motorBackRight.setPower(BackRight);
 
         grabber.setPosition(grabberPos);
         /*
