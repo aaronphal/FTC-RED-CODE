@@ -27,7 +27,7 @@ import com.qualcomm.robotcore.hardware.Servo;
         X           X
           X       X
 */
-@TeleOp(name = "Concept: HolonomicDrivetrain", group = "Concept")
+@TeleOp(name = "MAIN", group = "Concept")
 //@Disabled
 public class MAIN extends OpMode {
 

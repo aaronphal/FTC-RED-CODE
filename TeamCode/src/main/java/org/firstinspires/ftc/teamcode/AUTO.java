@@ -57,8 +57,10 @@ public class AUTO extends OpMode
 {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftDrive = null;
-    private DcMotor rightDrive = null;
+    public static DcMotor motorFrontRight = null;
+    public static DcMotor motorFrontLeft = null;
+    public static DcMotor motorBackLeft = null;
+    public static DcMotor motorBackRight = null;
 
     private Om drive = new Om();
 
@@ -68,10 +70,10 @@ public class AUTO extends OpMode
     @Override
     public void init() {
         telemetry.addData("Status", "Initialized");
-        drive.motorFrontRight = hardwareMap.dcMotor.get("fr");
-        drive.motorFrontLeft = hardwareMap.dcMotor.get("fl");
-        drive.motorBackLeft = hardwareMap.dcMotor.get("bl");
-        drive.motorBackRight = hardwareMap.dcMotor.get("br");
+        motorFrontRight = hardwareMap.dcMotor.get("fr");
+        motorFrontLeft = hardwareMap.dcMotor.get("fl");
+        motorBackLeft = hardwareMap.dcMotor.get("bl");
+        motorBackRight = hardwareMap.dcMotor.get("br");
 
     }
 
@@ -115,8 +117,6 @@ public class AUTO extends OpMode
         // rightPower = -gamepad1.right_stick_y ;
 
         // Send calculated power to wheels
-        leftDrive.setPower(leftPower);
-        rightDrive.setPower(rightPower);
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());

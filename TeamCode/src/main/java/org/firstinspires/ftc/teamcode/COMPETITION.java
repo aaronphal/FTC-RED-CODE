@@ -29,12 +29,11 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
 
 /**
  * This file contains an example of an iterative (Non-Linear) "OpMode".
@@ -57,7 +56,13 @@ public class COMPETITION extends OpMode
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
 
-    private static Om drive = new Om();
+    private static Drivetrain drive = new Drivetrain();
+
+
+    float gamepad1LeftY = -gamepad1.left_stick_y;
+    float gamepad1LeftX = gamepad1.left_stick_x;
+    float gamepad1RightX = gamepad1.right_stick_x;
+
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -68,18 +73,6 @@ public class COMPETITION extends OpMode
 
         drive.init();
 
-
-        // Initialize the hardware variables. Note that the strings used here as parameters
-        // to 'get' must correspond to the names assigned during the robot configuration
-        // step (using the FTC Robot Controller app on the phone).
-//        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
-//        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-
-        // Most robots need the motor on one side to be reversed to drive forward
-        // Reverse the motor that runs backwards when connected directly to the battery
-
-
-        // Tell the driver that initialization is complete.
         telemetry.addData("Status", "Initialized");
     }
 
@@ -88,7 +81,7 @@ public class COMPETITION extends OpMode
      */
     @Override
     public void init_loop() {
-        drive.init_loop();
+        drive.stop();
     }
 
     /*
@@ -97,7 +90,7 @@ public class COMPETITION extends OpMode
     @Override
     public void start() {
         runtime.reset();
-        drive.start();
+
     }
 
     /*
@@ -106,8 +99,7 @@ public class COMPETITION extends OpMode
     @Override
     public void loop() {
         // Setup a variable for each drive wheel to save power level for telemetry
-        drive.loop();
-
+        drive.driveMain(gamepad1LeftX, gamepad1LeftY, gamepad1RightX);
 
     }
 
@@ -115,8 +107,8 @@ public class COMPETITION extends OpMode
      * Code to run ONCE after the driver hits STOP
      */
     @Override
-    public void stop() {
-        drive.stop();
+    public void stop(){
+
     }
 
 }
