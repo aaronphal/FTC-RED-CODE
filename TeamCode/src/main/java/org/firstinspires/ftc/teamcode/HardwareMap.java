@@ -57,6 +57,7 @@ public class HardwareMap
     DcMotor motorBackRight;
     DcMotor motorBackLeft;
     DcMotor elevator;
+    DcMotor wrist;
     Servo grabber;
 
     public static final double MID_SERVO       =  0.5 ;
@@ -82,8 +83,8 @@ public class HardwareMap
         motorFrontRight = hwMap.get(DcMotor.class, "fr");
         motorBackLeft  = hwMap.get(DcMotor.class, "bl");
         motorBackRight = hwMap.get(DcMotor.class, "br");
+        wrist = hwMap.get(DcMotor.class, "wr");
         elevator = hwMap.get(DcMotor.class, "el");
-
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         //motorFrontLeft.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         //motorFrontRight.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
@@ -94,6 +95,7 @@ public class HardwareMap
         motorBackLeft.setPower(0);
         motorBackRight.setPower(0);
         elevator.setPower(0);
+        wrist.setPower(0);
         //leftArm.setPower(0);
 
         // Set all motors to run without encoders.
@@ -103,6 +105,7 @@ public class HardwareMap
         motorBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         elevator.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        wrist.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.

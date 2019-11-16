@@ -112,6 +112,7 @@ public class MAIN extends OpMode {
         robot.motorBackLeft.setPower(BackLeft);
         robot.motorBackRight.setPower(BackRight);
         robot.elevator.setPower(Elevator);
+        robot.wrist.setPower(Wrist);
 
         if(gamepad1.a){
             grabber.setPosition(0.6);
@@ -131,6 +132,7 @@ public class MAIN extends OpMode {
         telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
         telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
         telemetry.addData("elevator pwr", "elevator pwr: " + String.format("%.2f", Elevator));
+        telemetry.addData("wrist pwr", "wrist pwr: " + String.format("%.2f", Wrist));
 
     }
 
