@@ -79,24 +79,21 @@ public class MAIN extends OpMode {
         float BackRight = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
         float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
-        if(gamepad1.a){
+        if(gamepad1.right_bumper){
             Elevator=1;
         }
-        else if(gamepad1.b){
+        else if(gamepad1.left_bumper){
             Elevator=-1;
         }
         else{
             Elevator=0;
         }
 
-        if(gamepad1.x){
+        if(gamepad1.a){
             grabberPos=0.6;
         }
-        else if(gamepad1.y){
-            grabberPos=0.5;
-        }
-        else{
-            grabberPos=0;
+        else if(gamepad1.b){
+            grabberPos=0.4;
         }
 
         // clip the right/left values so that the values never exceed +/- 1
