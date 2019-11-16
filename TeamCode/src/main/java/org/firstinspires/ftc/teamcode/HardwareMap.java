@@ -30,7 +30,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -57,6 +56,7 @@ public class HardwareMap
     DcMotor motorFrontLeft;
     DcMotor motorBackRight;
     DcMotor motorBackLeft;
+    DcMotor elevator;
     Servo grabber;
 
     public static final double MID_SERVO       =  0.5 ;
@@ -82,6 +82,7 @@ public class HardwareMap
         motorFrontRight = hwMap.get(DcMotor.class, "fr");
         motorBackLeft  = hwMap.get(DcMotor.class, "bl");
         motorBackRight = hwMap.get(DcMotor.class, "br");
+        elevator = hwMap.get(DcMotor.class, "el");
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         //motorFrontLeft.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         //motorFrontRight.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
@@ -91,6 +92,7 @@ public class HardwareMap
         motorFrontRight.setPower(0);
         motorBackLeft.setPower(0);
         motorBackRight.setPower(0);
+        elevator.setPower(0);
         //leftArm.setPower(0);
 
         // Set all motors to run without encoders.
@@ -99,6 +101,7 @@ public class HardwareMap
         motorFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        elevator.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Define and initialize ALL installed servos.

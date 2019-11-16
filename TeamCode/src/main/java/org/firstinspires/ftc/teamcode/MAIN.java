@@ -9,7 +9,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /*
@@ -65,6 +64,7 @@ public class MAIN extends OpMode {
     public void loop() {
 
         double grabberPos;
+        double Elevator;
         // left stick controls direction
         // right stick X controls rotation
 
@@ -78,6 +78,16 @@ public class MAIN extends OpMode {
         float FrontRight = gamepad1LeftY - gamepad1LeftX - gamepad1RightX;
         float BackRight = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
         float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
+
+        if(gamepad1.a){
+            Elevator=1;
+        }
+        else if(gamepad1.b){
+            Elevator=-1;
+        }
+        else{
+            Elevator=0;
+        }
 
         if(gamepad1.x){
             grabberPos=0.6;
@@ -100,6 +110,7 @@ public class MAIN extends OpMode {
         robot.motorFrontLeft.setPower(FrontLeft);
         robot.motorBackLeft.setPower(BackLeft);
         robot.motorBackRight.setPower(BackRight);
+        robot.elevator.setPower(Elevator);
 
         grabber.setPosition(grabberPos);
         /*
@@ -112,6 +123,7 @@ public class MAIN extends OpMode {
         telemetry.addData("f right pwr", "front right pwr: " + String.format("%.2f", FrontRight));
         telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
         telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
+        telemetry.addData("elevator pwr", "elevator pwr: " + String.format("%.2f", Elevator));
 
     }
 
