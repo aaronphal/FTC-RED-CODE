@@ -65,6 +65,7 @@ public class MAIN extends OpMode {
 
         double grabberPos;
         double Elevator;
+        double Wrist;
         // left stick controls direction
         // right stick X controls rotation
 
@@ -79,21 +80,24 @@ public class MAIN extends OpMode {
         float BackRight = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
         float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
-        if(gamepad1.right_bumper){
+        if(gamepad1.dpad_up){
             Elevator=1;
         }
-        else if(gamepad1.left_bumper){
+        else if(gamepad1.dpad_down){
             Elevator=-1;
         }
         else{
             Elevator=0;
         }
 
-        if(gamepad1.a){
-            grabberPos=0.6;
+        if(gamepad1.y){
+            Wrist=1;
         }
-        else if(gamepad1.b){
-            grabberPos=0.4;
+        else if(gamepad1.x){
+            Wrist=-1;
+        }
+        else{
+            Wrist=0;
         }
 
         // clip the right/left values so that the values never exceed +/- 1
@@ -109,7 +113,13 @@ public class MAIN extends OpMode {
         robot.motorBackRight.setPower(BackRight);
         robot.elevator.setPower(Elevator);
 
-        grabber.setPosition(grabberPos);
+        if(gamepad1.a){
+            grabber.setPosition(0.6);
+        }
+        else if(gamepad1.b) {
+            grabber.setPosition(0.4);
+        }
+
         /*
          * Telemetry for debugging
          */

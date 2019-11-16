@@ -83,6 +83,7 @@ public class HardwareMap
         motorBackLeft  = hwMap.get(DcMotor.class, "bl");
         motorBackRight = hwMap.get(DcMotor.class, "br");
         elevator = hwMap.get(DcMotor.class, "el");
+
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         //motorFrontLeft.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         //motorFrontRight.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
