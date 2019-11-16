@@ -32,6 +32,8 @@ public class MAIN extends OpMode {
     HardwareMap robot = new HardwareMap();
 
     Servo grabber = null;
+    Servo dragger1 = null;
+    Servo dragger2 = null;
     /**
      * Constructor
      */
@@ -100,6 +102,7 @@ public class MAIN extends OpMode {
             Wrist=0;
         }
 
+
         // clip the right/left values so that the values never exceed +/- 1
         //FrontRight = Range.clip(FrontRight, -1, 1);
         //FrontLeft = Range.clip(FrontLeft, -1, 1);
@@ -119,6 +122,17 @@ public class MAIN extends OpMode {
         }
         else if(gamepad1.b) {
             grabber.setPosition(0.4);
+        }
+        if(gamepad1.a){
+            dragger1.setPosition(0);
+        }
+        else if(gamepad1.b) {
+            dragger1.setPosition(0.4);
+        }if(gamepad1.a){
+            dragger2.setPosition(0);
+        }
+        else if(gamepad1.b) {
+            dragger2.setPosition(0.4);
         }
 
         /*
