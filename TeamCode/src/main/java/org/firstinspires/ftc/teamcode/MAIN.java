@@ -115,7 +115,7 @@ public class MAIN extends OpMode {
         robot.wrist.setPower(Wrist);
 
         if(gamepad1.a){
-            grabber.setPosition(0.6);
+            grabber.setPosition(0);
         }
         else if(gamepad1.b) {
             grabber.setPosition(0.4);
