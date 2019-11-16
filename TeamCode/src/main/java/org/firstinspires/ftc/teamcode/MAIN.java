@@ -91,10 +91,10 @@ public class MAIN extends OpMode {
         }
 
         if(gamepad1.y){
-            Wrist=1;
+            Wrist=.6;
         }
         else if(gamepad1.x){
-            Wrist=-1;
+            Wrist=-.6;
         }
         else{
             Wrist=0;
