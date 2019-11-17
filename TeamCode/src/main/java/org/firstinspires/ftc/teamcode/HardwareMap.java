@@ -57,11 +57,16 @@ public class HardwareMap
     DcMotor motorFrontLeft;
     DcMotor motorBackRight;
     DcMotor motorBackLeft;
+    DcMotor elevator;
+    DcMotor wrist;
     Servo grabber;
+    Servo dragger1;
+    Servo dragger2;
 
     public static final double MID_SERVO       =  0.5 ;
     public static final double ARM_UP_POWER    =  0.45 ;
     public static final double ARM_DOWN_POWER  = -0.45 ;
+
 
     /* local OpMode members. */
     com.qualcomm.robotcore.hardware.HardwareMap hwMap           =  null;
@@ -82,6 +87,12 @@ public class HardwareMap
         motorFrontRight = hwMap.get(DcMotor.class, "fr");
         motorBackLeft  = hwMap.get(DcMotor.class, "bl");
         motorBackRight = hwMap.get(DcMotor.class, "br");
+        wrist = hwMap.get(DcMotor.class, "wr");
+        elevator = hwMap.get(DcMotor.class, "el");
+        grabber = hwMap.get(Servo.class, "gr");
+        dragger1 = hwMap.get(Servo.class, "done");
+        dragger2 = hwMap.get(Servo.class, "dtwo");
+
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         //motorFrontLeft.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         //motorFrontRight.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors

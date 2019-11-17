@@ -32,7 +32,7 @@ public class MAIN extends OpMode {
 
     HardwareMap robot = new HardwareMap();
 
-    Servo grabber = null;
+
     /**
      * Constructor
      */
@@ -51,7 +51,9 @@ public class MAIN extends OpMode {
          * configured your robot and created the configuration file.
          */
 
-        grabber = hardwareMap.get(Servo.class, "gr");
+//        grabber = hardwareMap.get(Servo.class, "gr");
+//        dragger1 = hardwareMap.get(Servo.class, "done");
+//        dragger2 = hardwareMap.get(Servo.class, "dtwo");
         //These work without reversing (Tetrix motors).
         //AndyMark motors may be opposite, in which case uncomment these lines:
         //motorFrontLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -101,7 +103,30 @@ public class MAIN extends OpMode {
         robot.motorBackLeft.setPower(BackLeft);
         robot.motorBackRight.setPower(BackRight);
 
-        grabber.setPosition(grabberPos);
+//        robot.elevator.setPower(Elevator);
+//        robot.wrist.setPower(Wrist);
+
+        if(gamepad1.a){
+            robot.grabber.setPosition(0);
+        }
+        else if(gamepad1.b) {
+            robot.grabber.setPosition(0.4);
+        }
+        if(gamepad1.left_bumper){
+            robot.dragger1.setPosition(0);
+        }
+        else if(gamepad1.right_bumper) {
+            robot.dragger1.setPosition(0.4);
+
+        }if(gamepad1.left_bumper){
+            robot.dragger2.setPosition(.45);
+        }
+        else if(gamepad1.right_bumper) {
+            robot.dragger2.setPosition(0.1);
+        }
+
+
+        robot.grabber.setPosition(grabberPos);
         /*
          * Telemetry for debugging
          */
