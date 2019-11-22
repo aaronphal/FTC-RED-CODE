@@ -81,15 +81,15 @@ public class MAIN extends OpMode {
         float BackRight = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
         float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
-        if(gamepad1.x){
+        if(gamepad2.x){
             grabberPos=0.6;
         }
-        else if(gamepad1.y){
+        else if(gamepad2.a){
             grabberPos=0.5;
         }
-        else{
-            grabberPos=0;
-        }
+        //else{
+          //  grabberPos=0;
+       // }
 
         // clip the right/left values so that the values never exceed +/- 1
         //FrontRight = Range.clip(FrontRight, -1, 1);
@@ -103,30 +103,46 @@ public class MAIN extends OpMode {
         robot.motorBackLeft.setPower(BackLeft);
         robot.motorBackRight.setPower(BackRight);
 
-//        robot.elevator.setPower(Elevator);
-//        robot.wrist.setPower(Wrist);
 
-        if(gamepad1.a){
+
+
+
+        if(gamepad2.dpad_up){
+            robot.elevator.setPower(1);
+        }
+        else if(gamepad2.dpad_down) {
+            robot.elevator.setPower(-1);
+
+        }
+        else {
+            robot.elevator.setPower(0);
+        }
+
+
+
+
+
+
+        if(gamepad2.a){
             robot.grabber.setPosition(0);
         }
-        else if(gamepad1.b) {
+        else if(gamepad2.b) {
             robot.grabber.setPosition(0.4);
         }
-        if(gamepad1.left_bumper){
+        if(gamepad2.left_bumper){
             robot.dragger1.setPosition(0);
         }
-        else if(gamepad1.right_bumper) {
+        else if(gamepad2.right_bumper) {
             robot.dragger1.setPosition(0.4);
 
-        }if(gamepad1.left_bumper){
+        }if(gamepad2.left_bumper){
             robot.dragger2.setPosition(.45);
         }
-        else if(gamepad1.right_bumper) {
+        else if(gamepad2.right_bumper) {
             robot.dragger2.setPosition(0.1);
         }
 
-
-        robot.grabber.setPosition(grabberPos);
+        //robot.grabber.setPosition(grabberPos);
         /*
          * Telemetry for debugging
          */
