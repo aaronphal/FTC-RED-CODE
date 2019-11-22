@@ -9,8 +9,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 
 /*
 	Holonomic concepts from:
@@ -66,7 +64,6 @@ public class MAIN extends OpMode {
     @Override
     public void loop() {
 
-        double grabberPos;
         // left stick controls direction
         // right stick X controls rotation
 
@@ -81,12 +78,7 @@ public class MAIN extends OpMode {
         float BackRight = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
         float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
-        if(gamepad2.x){
-            grabberPos=0.6;
-        }
-        else if(gamepad2.a){
-            grabberPos=0.5;
-        }
+
         //else{
           //  grabberPos=0;
        // }
