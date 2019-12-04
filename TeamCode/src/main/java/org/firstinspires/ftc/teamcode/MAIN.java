@@ -9,8 +9,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 
 /*
 	Holonomic concepts from:
@@ -32,7 +30,7 @@ public class MAIN extends OpMode {
 
     HardwareMap robot = new HardwareMap();
 
-    Servo grabber = null;
+
     /**
      * Constructor
      */
@@ -51,7 +49,9 @@ public class MAIN extends OpMode {
          * configured your robot and created the configuration file.
          */
 
-        grabber = hardwareMap.get(Servo.class, "gr");
+//        grabber = hardwareMap.get(Servo.class, "gr");
+//        dragger1 = hardwareMap.get(Servo.class, "done");
+//        dragger2 = hardwareMap.get(Servo.class, "dtwo");
         //These work without reversing (Tetrix motors).
         //AndyMark motors may be opposite, in which case uncomment these lines:
         //motorFrontLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -64,7 +64,6 @@ public class MAIN extends OpMode {
     @Override
     public void loop() {
 
-        double grabberPos;
         // left stick controls direction
         // right stick X controls rotation
 
@@ -79,15 +78,10 @@ public class MAIN extends OpMode {
         float BackRight = gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
         float BackLeft = -gamepad1LeftY + gamepad1LeftX - gamepad1RightX;
 
-        if(gamepad1.x){
-            grabberPos=0.6;
-        }
-        else if(gamepad1.y){
-            grabberPos=0.5;
-        }
-        else{
-            grabberPos=0;
-        }
+
+        //else{
+          //  grabberPos=0;
+       // }
 
         // clip the right/left values so that the values never exceed +/- 1
         //FrontRight = Range.clip(FrontRight, -1, 1);
@@ -101,7 +95,46 @@ public class MAIN extends OpMode {
         robot.motorBackLeft.setPower(BackLeft);
         robot.motorBackRight.setPower(BackRight);
 
-        grabber.setPosition(grabberPos);
+
+
+
+
+        if(gamepad2.dpad_up){
+            robot.elevator.setPower(1);
+        }
+        else if(gamepad2.dpad_down) {
+            robot.elevator.setPower(-1);
+
+        }
+        else {
+            robot.elevator.setPower(0);
+        }
+
+
+
+
+
+
+        if(gamepad2.a){
+            robot.grabber.setPosition(0);
+        }
+        else if(gamepad2.b) {
+            robot.grabber.setPosition(0.4);
+        }
+        if(gamepad2.left_bumper){
+            robot.dragger1.setPosition(0);
+        }
+        else if(gamepad2.right_bumper) {
+            robot.dragger1.setPosition(0.4);
+
+        }if(gamepad2.left_bumper){
+            robot.dragger2.setPosition(.45);
+        }
+        else if(gamepad2.right_bumper) {
+            robot.dragger2.setPosition(0.1);
+        }
+
+        //robot.grabber.setPosition(grabberPos);
         /*
          * Telemetry for debugging
          */
