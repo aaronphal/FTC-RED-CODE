@@ -104,6 +104,9 @@ public class MAIN extends OpMode {
             if(robot.limit.getState()) {
                 robot.elevator.setPower(1);
             }
+            else{
+                robot.elevator.setPower(0);
+            }
         }
         else if(gamepad2.dpad_down) {
             robot.elevator.setPower(-1);
