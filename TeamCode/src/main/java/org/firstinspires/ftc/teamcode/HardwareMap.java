@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -64,6 +65,7 @@ public class HardwareMap
     Servo dragger1;
     Servo dragger2;
     Camera camera;
+    DigitalChannel limit;
 
     public static final double MID_SERVO       =  0.5 ;
     public static final double ARM_UP_POWER    =  0.45 ;
@@ -94,6 +96,7 @@ public class HardwareMap
         grabber = hwMap.get(Servo.class, "gr");
         dragger1 = hwMap.get(Servo.class, "done");
         dragger2 = hwMap.get(Servo.class, "dtwo");
+        limit = hwMap.get(DigitalChannel.class, "lim");
 
         //leftArm    = hwMap.get(DcMotor.class, "left_arm");
         //motorFrontLeft.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
