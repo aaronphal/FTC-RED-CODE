@@ -9,6 +9,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 
 /*
 	Holonomic concepts from:
@@ -41,7 +42,7 @@ public class MAIN extends OpMode {
     @Override
     public void init() {
         robot.init(hardwareMap);
-
+        robot.limit.setMode(DigitalChannel.Mode.INPUT);
 
         /*
          * Use the hardwareMap to get the dc motors and servos by name. Note
@@ -100,7 +101,12 @@ public class MAIN extends OpMode {
 
 
         if(gamepad2.dpad_up){
-            robot.elevator.setPower(1);
+            if(robot.limit.getState()) {
+                robot.elevator.setPower(1);
+            }
+            else{
+                robot.elevator.setPower(0);
+            }
         }
         else if(gamepad2.dpad_down) {
             robot.elevator.setPower(-1);
@@ -145,6 +151,8 @@ public class MAIN extends OpMode {
         telemetry.addData("f right pwr", "front right pwr: " + String.format("%.2f", FrontRight));
         telemetry.addData("b right pwr", "back right pwr: " + String.format("%.2f", BackRight));
         telemetry.addData("b left pwr", "back left pwr: " + String.format("%.2f", BackLeft));
+        telemetry.addData("MAGNET", "MAGNET VAL: " + (robot.limit.getState()));
+
 
     }
 
