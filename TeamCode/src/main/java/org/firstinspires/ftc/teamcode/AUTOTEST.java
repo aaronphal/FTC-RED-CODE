@@ -30,12 +30,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 /**
  * This file illustrates the concept of driving a path based on encoder counts.
@@ -80,6 +77,8 @@ public class AUTOTEST extends LinearOpMode {
                                                       (WHEEL_DIAMETER_INCHES * 3.1415);
     static final double     DRIVE_SPEED             = 1.0;
     static final double     TURN_SPEED              = 0.5;
+    static final double     WRIST_SPEED              = 0.5;
+
 
     @Override
     public void runOpMode() {
@@ -97,9 +96,13 @@ public class AUTOTEST extends LinearOpMode {
 
         robot.motorFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.motorFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.wrist.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         robot.motorFrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.motorFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.wrist.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0",  "Starting at %7d :%7d",
@@ -109,9 +112,11 @@ public class AUTOTEST extends LinearOpMode {
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
-
-        // Step through each leg of the path,
+            robot.wrist.setPower(0.5);
+            sleep(300);
+            robot.wrist.setPower(0);    // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
+        encoderWrist(WRIST_SPEED, 1, 10.0);
         encoderDrive(DRIVE_SPEED,  -40,  40, 10.0);  // S1: Forward 47 Inches with 5 Sec timeout
         encoderDrive(TURN_SPEED,   42, 42, 10.0);  // S2: Turn Right 12 Inches with 4 Sec timeout
         encoderDrive(DRIVE_SPEED, -44, 44, 10.0);  // S3: Reverse 24 Inches with 4 Sec timeout
@@ -193,6 +198,48 @@ public class AUTOTEST extends LinearOpMode {
             robot.motorFrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.motorBackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.motorBackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            //  sleep(250);   // optional pause after each move
+        }
+    }
+    public void encoderWrist(double speed,
+                             double inches,
+                             double timeoutS) {
+        int Target;
+
+        // Ensure that the opmode is still active
+        if (opModeIsActive()) {
+            // Determine new target position, and pass to motor controller
+            Target = robot.wrist.getCurrentPosition() + (int)(inches * COUNTS_PER_INCH);
+            robot.wrist.setTargetPosition(Target);
+
+            // Turn On RUN_TO_POSITION
+            robot.wrist.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            // reset the timeout time and start motion.
+            runtime.reset();
+            robot.wrist.setPower(Math.abs(speed));
+
+            // keep looping while we are still active, and there is time left, and both motors are running.
+            // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
+            // its target position, the motion will stop.  This is "safer" in the event that the robot will
+            // always end the motion as soon as possible.
+            // However, if you require that BOTH motors have finished their moves before the robot continues
+            // onto the next step, use (isBusy() || isBusy()) in the loop test.
+            while (opModeIsActive() &&
+                    (runtime.seconds() < timeoutS) &&
+                    (robot.motorFrontLeft.isBusy() && robot.motorFrontRight.isBusy())) {
+
+                // Display it for the driver.
+                telemetry.addData("Wrist",  "Running to %7d :%7d", Target);
+                telemetry.update();
+            }
+
+            // Stop all motion;
+            robot.wrist.setPower(0);
+
+            // Turn off RUN_TO_POSITION
+            robot.wrist.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             //  sleep(250);   // optional pause after each move
         }
