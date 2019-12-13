@@ -30,7 +30,7 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 public class MAIN extends OpMode {
 
     HardwareMap robot = new HardwareMap();
-
+    private double driveSpeed = 0.75;
 
     /**
      * Constructor
@@ -91,10 +91,10 @@ public class MAIN extends OpMode {
         //BackRight = Range.clip(BackRight, -1, 1);
 
         // write the values to the motors
-        robot.motorFrontRight.setPower(FrontRight);
-        robot.motorFrontLeft.setPower(FrontLeft);
-        robot.motorBackLeft.setPower(BackLeft);
-        robot.motorBackRight.setPower(BackRight);
+        robot.motorFrontRight.setPower(FrontRight*driveSpeed);
+        robot.motorFrontLeft.setPower(FrontLeft*driveSpeed);
+        robot.motorBackLeft.setPower(BackLeft*driveSpeed);
+        robot.motorBackRight.setPower(BackRight*driveSpeed);
 
 
 
